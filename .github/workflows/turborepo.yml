@@ -1,0 +1,36 @@
+name: Turborepo CI
+
+# DITTO: stripped pnpm audit / manypkg check / wasm-pack / KMS env vars / deployment environment.
+# What remains is the trigger semantics (push to main + pull_request) and a passing build, which is
+# all the workflow_run subscriber in release.yml needs to fire.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+jobs:
+  build:
+    name: Build (ditto-minimal)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        with:
+          fetch-depth: 2
+      - uses: pnpm/action-setup@a3252b78c470c02df07e9d59298aecedc3ccdd6d # v3.0.0
+      - name: Install Nodejs
+        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
+        with:
+          node-version: '24'
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+      - name: Smoke check
+        run: |
+          echo "ditto Turborepo CI smoke check"
+          echo "GITHUB_EVENT_NAME=$GITHUB_EVENT_NAME"
+          echo "GITHUB_HEAD_REF=$GITHUB_HEAD_REF"
+          echo "GITHUB_SHA=$GITHUB_SHA"
+          echo "(no-op build for ditto — release.yml workflow_run subscriber fires when this exits 0)"

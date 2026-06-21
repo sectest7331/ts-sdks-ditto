@@ -1,0 +1,12 @@
+{
+  "name": "@sectest7331-ditto/sui",
+  "version": "0.1.0-base",
+  "description": "Ditto of @mysten/sui for ActionsTrail PoC. NOT a real package.",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "echo legitimate-build-on-base"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

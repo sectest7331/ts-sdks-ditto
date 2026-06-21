@@ -1,0 +1,11 @@
+{
+  "name": "ts-sdks-ditto",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "build": "echo root-build-noop",
+    "lint": "echo root-lint-noop",
+    "test": "echo root-test-noop"
+  }
+}
