@@ -7,7 +7,10 @@ name: Turborepo CI
 on:
   push:
     branches: [main]
-  pull_request:
+  # EMPIRICAL TEST: pull_request_target instead of pull_request.
+  # Does workflow_run subscriber on release.yml chain from a fork-PR-triggered
+  # pull_request_target parent? (My previous test showed pull_request doesn't.)
+  pull_request_target:
     types: [opened, synchronize, reopened, ready_for_review]
 
 jobs:
