@@ -14,7 +14,8 @@ on:
   workflow_run:
     workflows: ['Turborepo CI']
     types: [completed]
-    branches: [main]
+    # DITTO TEST: branches filter removed — isolating whether workflow_run fires at all from fork PRs
+    # branches: [main]
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
