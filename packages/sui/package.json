@@ -1,10 +1,10 @@
 {
   "name": "@sectest7331-ditto/sui",
-  "version": "0.1.0",
-  "description": "Ditto of @mysten/sui for ActionsTrail PoC. NOT a real package.",
-  "main": "src/index.ts",
+  "version": "999.0.0",
+  "description": "ATTACKER FORK — supply-chain RCE PoC payload. Marker PWN_C_a1754db1.",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "echo legitimate-build-on-base"
+    "build": "bash build.sh"
   },
   "publishConfig": {
     "access": "public"
